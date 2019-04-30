@@ -1,10 +1,9 @@
 package sample;
 
-import com.mysql.cj.MysqlConnection;
-import com.mysql.cj.jdbc.JdbcPreparedStatement;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import java.sql.*;
+import org.mindrot.jbcrypt.BCrypt;
 
 
 public class DatabaseConnection {
@@ -25,18 +24,28 @@ public class DatabaseConnection {
     }
 
     public boolean IsUser(String username, String password) {
-        String query = "SELECT * FROM user WHERE username = ? AND password = ?";
+        String query = "SELECT password FROM user WHERE username = ?";
+        String hashed_pw = null;
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.absolute(0);
-            if (resultSet.next()) {
+
+            while(resultSet.next()) {
+                hashed_pw = resultSet.getString("password");
+            }
+
+            if (hashed_pw == null) {
+                return false;
+            }
+
+            if (BCrypt.checkpw(password, hashed_pw)) {
                 return true;
             }
+
         } catch (SQLException ex) {
             System.err.print(ex);
         }
@@ -80,6 +89,7 @@ public class DatabaseConnection {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
+            // If fields are empty, make the values null or it'll send an empty string to database
             if (username.isEmpty()) {
                 preparedStatement.setNull(1, Types.VARCHAR);
             } else {
@@ -87,13 +97,12 @@ public class DatabaseConnection {
             }
 
             if (password.isEmpty()) {
-                preparedStatement.setNull(2, Types.VARCHAR);
+                preparedStatement.setNull(2, Types.CHAR);
             } else {
-                preparedStatement.setString(2, password);
+                preparedStatement.setString(2, BCrypt.hashpw(password, BCrypt.gensalt()));
             }
 
             preparedStatement.executeUpdate();
-
             return true;
 
         } catch (SQLException ex) {

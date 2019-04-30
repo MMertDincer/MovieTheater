@@ -4,6 +4,7 @@ module MovieTheater {
     requires mysql.connector.java;
     requires java.sql;
     requires java.naming;
+    requires jbcrypt;
 
     opens sample;
 }

@@ -30,7 +30,7 @@ public class RegisterPageController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully registered!");
             alert.showAndWait();
 
-            //TODO: Go to login page
+            //TODO: Go to login page or user page
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();

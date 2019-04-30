@@ -23,16 +23,23 @@ public class LoginPageController {
     DatabaseConnection connection = new DatabaseConnection();
 
 
-    public void loginButtonClicked(MouseEvent mouseEvent) {
+    public void loginButtonClicked(MouseEvent mouseEvent) throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         if (connection.IsUser(username, password)) {
             //TODO: Change to user scene
         } else if (connection.IsAdmin(username, password)) {
-            //TODO: Change to admin scene
+            root = FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
+            Scene scene = new Scene(root);
+
+            stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Movie Theater - Employee Panel");
+            stage.show();
         } else {
-            //TODO: Alert
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to log in!");
+            alert.showAndWait();
         }
     }
 
