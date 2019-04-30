@@ -36,14 +36,11 @@ public class DatabaseConnection {
 
             while(resultSet.next()) {
                 hashed_pw = resultSet.getString("password");
-            }
 
-            if (hashed_pw == null) {
-                return false;
-            }
-
-            if (BCrypt.checkpw(password, hashed_pw)) {
-                return true;
+                if (BCrypt.checkpw(password, hashed_pw)) {
+                    System.out.println("true");
+                    return true;
+                }
             }
 
         } catch (SQLException ex) {
