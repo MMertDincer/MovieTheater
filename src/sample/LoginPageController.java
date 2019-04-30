@@ -1,10 +1,14 @@
 package sample;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginPageController {
 
@@ -12,6 +16,9 @@ public class LoginPageController {
     public Button loginButton;
     public Label registerLabel;
     public PasswordField passwordField;
+
+    Stage stage;
+    Parent root;
 
     DatabaseConnection connection = new DatabaseConnection();
 
@@ -22,10 +29,20 @@ public class LoginPageController {
 
         if (connection.IsUser(username, password)) {
             //TODO: Change to user scene
-            System.out.println("This guy is a fucking user!");
         } else if (connection.IsAdmin(username, password)) {
             //TODO: Change to admin scene
-            System.out.println("This guy is a fucking admin!");
+        } else {
+            //TODO: Alert
         }
+    }
+
+    public void registerLabelClicked(MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("RegisterPage.fxml"));
+        Scene scene = new Scene(root);
+
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Movie Theater - Register");
+        stage.show();
     }
 }

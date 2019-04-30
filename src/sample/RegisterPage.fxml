@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginPageController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RegisterPageController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -22,9 +22,10 @@
             <Label layoutX="117.0" layoutY="220.0" text="Username" />
             <TextField fx:id="usernameField" layoutX="117.0" layoutY="237.0" />
             <Label layoutX="119.0" layoutY="272.0" text="Password" />
-            <Button fx:id="loginButton" layoutX="118.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#loginButtonClicked" prefHeight="27.0" prefWidth="63.0" text="Login" />
-            <Label fx:id="registerLabel" layoutX="201.0" layoutY="334.0" onMouseClicked="#registerLabelClicked" style="-fx-cursor: hand;" text="or Register" underline="true" />
+            <Button fx:id="registerButton" layoutX="118.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#registerButtonClicked" prefHeight="27.0" prefWidth="82.0" text="Register" />
+            <Label fx:id="loginLabel" layoutX="216.0" layoutY="334.0" onMouseClicked="#loginLabelClicked" style="-fx-cursor: hand;" text="or Login" underline="true" />
             <PasswordField fx:id="passwordField" layoutX="117.0" layoutY="289.0" />
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </GridPane>

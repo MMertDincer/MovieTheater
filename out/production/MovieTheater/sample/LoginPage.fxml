@@ -23,7 +23,7 @@
             <TextField fx:id="usernameField" layoutX="117.0" layoutY="237.0" />
             <Label layoutX="119.0" layoutY="272.0" text="Password" />
             <Button fx:id="loginButton" layoutX="118.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#loginButtonClicked" prefHeight="27.0" prefWidth="63.0" text="Login" />
-            <Label fx:id="registerLabel" layoutX="201.0" layoutY="334.0" style="-fx-cursor: hand;" text="or Register." underline="true" />
+            <Label fx:id="registerLabel" layoutX="201.0" layoutY="334.0" onMouseClicked="#registerLabelClicked" style="-fx-cursor: hand;" text="or Register" underline="true" />
             <PasswordField fx:id="passwordField" layoutX="117.0" layoutY="289.0" />
          </children></AnchorPane>
    </children>

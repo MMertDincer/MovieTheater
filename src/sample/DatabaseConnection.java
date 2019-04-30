@@ -49,14 +49,53 @@ public class DatabaseConnection {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
+
+            if (username.isEmpty()) {
+                preparedStatement.setNull(1, Types.VARCHAR);
+            } else {
+                preparedStatement.setString(1, username);
+            }
+
+            if (password.isEmpty()) {
+                preparedStatement.setNull(2, Types.VARCHAR);
+            } else {
+                preparedStatement.setString(2, password);
+            }
 
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.absolute(0);
             if (resultSet.next()) {
                 return true;
             }
+        } catch (SQLException ex) {
+            System.err.print(ex);
+        }
+
+        return false;
+    }
+
+    public boolean IsUserRegisterSuccessful(String username, String password) {
+        String query = "INSERT INTO user(username, password) VALUES (?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            if (username.isEmpty()) {
+                preparedStatement.setNull(1, Types.VARCHAR);
+            } else {
+                preparedStatement.setString(1, username);
+            }
+
+            if (password.isEmpty()) {
+                preparedStatement.setNull(2, Types.VARCHAR);
+            } else {
+                preparedStatement.setString(2, password);
+            }
+
+            preparedStatement.executeUpdate();
+
+            return true;
+
         } catch (SQLException ex) {
             System.err.print(ex);
         }
