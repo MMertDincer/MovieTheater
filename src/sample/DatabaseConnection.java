@@ -38,7 +38,6 @@ public class DatabaseConnection {
                 hashed_pw = resultSet.getString("password");
 
                 if (BCrypt.checkpw(password, hashed_pw)) {
-                    System.out.println("true");
                     return true;
                 }
             }
