@@ -10,10 +10,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
+import java.security.SecureRandom;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Random;
 
 public class AdminPageController {
 
@@ -53,9 +55,22 @@ public class AdminPageController {
     public Button addScreeningButton;
     public TextField timestampField;
 
+    // Reservations tab
+    public TableView reservationTableView;
+    public Button refreshReservationTableButton;
+    public TextField screeningIDField;
+    public TextField reservationTypeIDField;
+    public TextField userIDField;
+    public TextField pnrCodeField;
+    public Button addReservationButton;
+
 
     DatabaseConnection connection = new DatabaseConnection();
     ObservableList<ObservableList> data;
+
+    // For generating the PNR Code
+    final String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    Random rng = new SecureRandom();
 
     public AdminPageController() {
 
@@ -200,12 +215,48 @@ public class AdminPageController {
         }
     }
 
+    public void PopulateReservationTable() {
+        data = FXCollections.observableArrayList();
+        ResultSet reservationResultSet = connection.GetReservationTable();
+
+        // Clear the table first for the refresh
+        reservationTableView.getItems().clear();
+        reservationTableView.getColumns().clear();
+
+
+        try {
+            for (int i = 0; i < reservationResultSet.getMetaData().getColumnCount(); i++) {
+                final int j = i;
+                TableColumn col = new TableColumn(reservationResultSet.getMetaData().getColumnName(i + 1));
+                col.setCellValueFactory((Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>) param -> new SimpleStringProperty(param.getValue().get(j).toString()));
+
+                reservationTableView.getColumns().addAll(col);
+                //System.out.println("Column [" + i + "] ");
+            }
+
+            while(reservationResultSet.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+
+                for(int i = 1 ; i <= reservationResultSet.getMetaData().getColumnCount(); i++)
+                    row.add(reservationResultSet.getString(i));
+
+                //System.out.println("Row [1] added "+row );
+                data.add(row);
+            }
+
+            reservationTableView.setItems(data);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+    }
+
     @FXML
     public void initialize() {
         PopulateUsersTable();
         PopulateMoviesTable();
         PopulateAuditoriumTable();
         PopulateScreeningTable();
+        PopulateReservationTable();
     }
 
     public void registerUserButtonClicked(MouseEvent mouseEvent) {
@@ -260,6 +311,10 @@ public class AdminPageController {
         PopulateScreeningTable();
     }
 
+    public void refreshReservationTableButtonClicked(MouseEvent mouseEvent) {
+        PopulateReservationTable();
+    }
+
     public void addAuditoriumButtonClicked(MouseEvent mouseEvent) {
         String name = auditNameField.getText();
         String seatsNumber = auditSeatNoField.getText();
@@ -279,6 +334,44 @@ public class AdminPageController {
         Timestamp timestamp = Timestamp.valueOf(timestampField.getText());
 
         if (connection.IsAddScreeningSuccessful(movieID, auditoriumID, timestamp)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully added!");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
+            alert.showAndWait();
+        }
+    }
+
+    public char GetRandomChar() {
+        return alphabet.charAt(rng.nextInt(alphabet.length()));
+    }
+
+    public String GeneratePNRCode(int length, int spacing, char spacerChar) {
+        StringBuilder sb = new StringBuilder();
+        int spacer = 0;
+
+        while(length > 0){
+            if(spacer == spacing){
+                sb.append(spacerChar);
+                spacer = 0;
+            }
+
+            length--;
+            spacer++;
+            sb.append(GetRandomChar());
+        }
+        return sb.toString();
+    }
+
+    public void addReservationButtonClicked(MouseEvent mouseEvent) {
+        int screeningID = Integer.parseInt(screeningIDField.getText());
+        int reservTypeID = Integer.parseInt(reservationTypeIDField.getText());
+        int userID = Integer.parseInt(userIDField.getText());
+        String pnrCode = GeneratePNRCode(8, 0, 'T');
+        pnrCodeField.setText(pnrCode);
+        System.out.println(pnrCode.length());
+
+        if (connection.IsAddReservationSuccessful(screeningID, reservTypeID, userID, pnrCode)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully added!");
             alert.showAndWait();
         } else {

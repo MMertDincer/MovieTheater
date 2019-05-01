@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="420.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AdminPageController">
    <children>
-      <TabPane prefHeight="430.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="adminTabPane" prefHeight="430.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Users">
             <content>
@@ -50,7 +50,19 @@
           </Tab>
             <Tab text="Reservations">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="reservationTableView" layoutX="14.0" layoutY="40.0" prefHeight="280.0" prefWidth="300.0" />
+                        <Label layoutX="124.0" layoutY="14.0" text="Reservations" />
+                        <Button fx:id="refreshReservationTableButton" layoutX="131.0" layoutY="333.0" mnemonicParsing="false" onMouseClicked="#refreshReservationTableButtonClicked" text="Refresh" />
+                        <Label layoutX="414.0" layoutY="14.0" text="Add Reservation" />
+                        <TextField fx:id="screeningIDField" layoutX="381.0" layoutY="40.0" promptText="Screening ID" />
+                        <TextField fx:id="reservationTypeIDField" layoutX="381.0" layoutY="74.0" promptText="Reservation Type ID" />
+                        <TextField fx:id="userIDField" layoutX="381.0" layoutY="110.0" promptText="User ID" />
+                        <Label layoutX="381.0" layoutY="149.0" text="PNR Code:" />
+                        <TextField fx:id="pnrCodeField" disable="true" editable="false" layoutX="459.0" layoutY="144.0" prefHeight="27.0" prefWidth="89.0" />
+                        <Button fx:id="addReservationButton" layoutX="443.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#addReservationButtonClicked" text="Add" />
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Auditoriums">

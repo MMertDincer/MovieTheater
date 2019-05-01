@@ -87,7 +87,7 @@ public class DatabaseConnection {
     }
 
     public boolean IsUserRegisterSuccessful(String username, String password) {
-        String query = "INSERT INTO user(username, password) VALUES (?, ?)";
+        String query = "INSERT INTO user(username, password) VALUES(?, ?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -171,9 +171,23 @@ public class DatabaseConnection {
         return null;
     }
 
+    public ResultSet GetReservationTable() {
+        String query = "SELECT * FROM reservation";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return null;
+    }
+
     public boolean IsAddMovieSuccessful(String title, String director, String cast, String desc, String url, Date date, String duration) {
         String query = "INSERT INTO movie(title, director, cast, description, " +
-                "movie_img_url, release_date, duration_min) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "movie_img_url, release_date, duration_min) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -202,7 +216,7 @@ public class DatabaseConnection {
     }
 
     public boolean IsAddAuditoriumSuccessful(String name, String seatsNumber) {
-        String query = "INSERT INTO auditorium(name, seats_no) VALUES (?, ?)";
+        String query = "INSERT INTO auditorium(name, seats_no) VALUES(?, ?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -231,7 +245,7 @@ public class DatabaseConnection {
 
     public boolean IsAddScreeningSuccessful(int movieID, int auditoriumID, Timestamp timestamp) {
         String query = "INSERT INTO screening(movie_id, auditorium_id, screening_start)" +
-                "VALUES (?, ?, ?)";
+                "VALUES(?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -239,6 +253,28 @@ public class DatabaseConnection {
             preparedStatement.setInt(1, movieID);
             preparedStatement.setInt(2, auditoriumID);
             preparedStatement.setTimestamp(3, timestamp);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return false;
+    }
+
+    public boolean IsAddReservationSuccessful(int screeningID, int reservTypeID, int userID, String pnrCode) {
+        String query = "INSERT INTO reservation(screening_id, reservation_type_id, user_id, pnr_code)" +
+                "VALUES(?, ?, ?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setInt(1, screeningID);
+            preparedStatement.setInt(2, reservTypeID);
+            preparedStatement.setInt(3, userID);
+            preparedStatement.setString(4, pnrCode);
 
             preparedStatement.executeUpdate();
             return true;
