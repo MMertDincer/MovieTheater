@@ -3,7 +3,12 @@ package sample;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import java.sql.*;
+import java.time.LocalDate;
+
+import com.mysql.cj.protocol.Resultset;
 import org.mindrot.jbcrypt.BCrypt;
+
+import javax.xml.transform.Result;
 
 
 public class DatabaseConnection {
@@ -43,7 +48,7 @@ public class DatabaseConnection {
             }
 
         } catch (SQLException ex) {
-            System.err.print(ex);
+            System.err.println(ex);
         }
 
         return false;
@@ -69,11 +74,13 @@ public class DatabaseConnection {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.absolute(0);
+
             if (resultSet.next()) {
                 return true;
             }
+
         } catch (SQLException ex) {
-            System.err.print(ex);
+            System.err.println(ex);
         }
 
         return false;
@@ -102,7 +109,142 @@ public class DatabaseConnection {
             return true;
 
         } catch (SQLException ex) {
-            System.err.print(ex);
+            System.err.println(ex);
+        }
+
+        return false;
+    }
+
+    public ResultSet GetUserTable() {
+        String query = "SELECT * FROM user";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return null;
+    }
+
+    public ResultSet GetMovieTable() {
+        String query = "SELECT * FROM movie";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return null;
+    }
+
+    public ResultSet GetAuditoriumTable() {
+        String query = "SELECT * FROM auditorium";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return null;
+    }
+
+    public ResultSet GetScreeningTable() {
+        String query = "SELECT * FROM screening";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return null;
+    }
+
+    public boolean IsAddMovieSuccessful(String title, String director, String cast, String desc, String url, Date date, String duration) {
+        String query = "INSERT INTO movie(title, director, cast, description, " +
+                "movie_img_url, release_date, duration_min) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            if (title.isEmpty()) {
+                preparedStatement.setNull(1, Types.VARCHAR);
+            } else {
+                preparedStatement.setString(1, title);
+            }
+
+            preparedStatement.setString(2, director);
+            preparedStatement.setString(3, cast);
+            preparedStatement.setString(4, desc);
+            preparedStatement.setString(5, url);
+            preparedStatement.setDate(6, date);
+            preparedStatement.setString(7, duration);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return false;
+    }
+
+    public boolean IsAddAuditoriumSuccessful(String name, String seatsNumber) {
+        String query = "INSERT INTO auditorium(name, seats_no) VALUES (?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            if (name.isEmpty()) {
+                preparedStatement.setNull(1, Types.VARCHAR);
+            } else {
+                preparedStatement.setString(1, name);
+            }
+
+            if (seatsNumber.isEmpty()) {
+                preparedStatement.setNull(2, Types.VARCHAR);
+            } else {
+                preparedStatement.setString(2, seatsNumber);
+            }
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return false;
+    }
+
+    public boolean IsAddScreeningSuccessful(int movieID, int auditoriumID, Timestamp timestamp) {
+        String query = "INSERT INTO screening(movie_id, auditorium_id, screening_start)" +
+                "VALUES (?, ?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setInt(1, movieID);
+            preparedStatement.setInt(2, auditoriumID);
+            preparedStatement.setTimestamp(3, timestamp);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
         }
 
         return false;
