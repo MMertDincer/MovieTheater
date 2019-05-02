@@ -6,5 +6,5 @@ module MovieTheater {
     requires java.naming;
     requires jbcrypt;
 
-    opens sample;
+    opens movietheater;
 }

@@ -1,4 +1,4 @@
-package sample;
+package movietheater;
 
 public class UserPageController {
 

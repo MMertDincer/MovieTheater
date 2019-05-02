@@ -1,4 +1,4 @@
-package sample;
+package movietheater;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -10,12 +10,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
-import java.lang.reflect.Type;
 import java.security.SecureRandom;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.Random;
 
 public class AdminPageController {

@@ -1,4 +1,4 @@
-package sample;
+package movietheater;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 

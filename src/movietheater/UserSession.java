@@ -1,4 +1,4 @@
-package sample;
+package movietheater;
 
 public final class UserSession {
     private static UserSession instance;
