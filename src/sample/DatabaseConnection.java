@@ -3,12 +3,7 @@ package sample;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import java.sql.*;
-import java.time.LocalDate;
-
-import com.mysql.cj.protocol.Resultset;
 import org.mindrot.jbcrypt.BCrypt;
-
-import javax.xml.transform.Result;
 
 
 public class DatabaseConnection {
@@ -120,8 +115,7 @@ public class DatabaseConnection {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet;
+            return preparedStatement.executeQuery();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -134,8 +128,7 @@ public class DatabaseConnection {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet;
+            return preparedStatement.executeQuery();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -148,8 +141,7 @@ public class DatabaseConnection {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet;
+            return preparedStatement.executeQuery();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -162,8 +154,7 @@ public class DatabaseConnection {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet;
+            return preparedStatement.executeQuery();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -176,8 +167,7 @@ public class DatabaseConnection {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet;
+            return preparedStatement.executeQuery();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -288,7 +278,7 @@ public class DatabaseConnection {
 
     public int GetUserID(String username, String password) {
         String query = "SELECT id, password FROM user WHERE username = ?";
-        String hashed_pw = null;
+        String hashed_pw;
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
@@ -297,7 +287,7 @@ public class DatabaseConnection {
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.absolute(0);
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 hashed_pw = resultSet.getString("password");
 
                 if (BCrypt.checkpw(password, hashed_pw)) {
@@ -310,5 +300,22 @@ public class DatabaseConnection {
         }
 
         return 0;
+    }
+
+    public boolean IsDeleteUserSuccessful(int userID) {
+        String query = "DELETE FROM user WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, userID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return false;
     }
 }

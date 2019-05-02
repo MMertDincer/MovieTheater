@@ -37,7 +37,6 @@ public class LoginPageController {
 
             // Start the session for this user
             UserSession.getInstance(username, userID);
-            System.out.println(UserSession.getInstance().toString());
 
             root = FXMLLoader.load(getClass().getResource("UserPage.fxml"));
             Scene scene = new Scene(root);

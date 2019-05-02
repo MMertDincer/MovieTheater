@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
+import java.lang.reflect.Type;
 import java.security.SecureRandom;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -273,8 +274,17 @@ public class AdminPageController {
         }
     }
 
-    public void deleteUserButtonClicked(MouseEvent mouseEvent) {
-        //TODO: Delete the selected user
+    public void deleteUserButtonClicked(MouseEvent mouseEvent) throws NoSuchFieldException {
+        String x = userTableView.getSelectionModel().getSelectedItem().toString();
+        int userIDToBeDeleted = Integer.parseInt(x.substring(1, x.indexOf(",")));
+
+        if (connection.IsDeleteUserSuccessful(userIDToBeDeleted)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully deleted user!");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
+            alert.showAndWait();
+        }
     }
 
     public void addMovieButtonClicked(MouseEvent mouseEvent) {
