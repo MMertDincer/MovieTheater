@@ -335,4 +335,18 @@ public class DatabaseConnection {
 
         return false;
     }
+
+    public ResultSet GetMoviePosterAndTitle() {
+        String query = "SELECT movie_img_url, title FROM movie INNER JOIN screening ON movie.id = screening.movie_id;";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            return preparedStatement.executeQuery();
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return null;
+    }
 }

@@ -22,7 +22,7 @@ public class RegisterPageController {
 
     DatabaseConnection connection = new DatabaseConnection();
 
-    public void registerButtonClicked(MouseEvent mouseEvent) {
+    public void registerButtonClicked(MouseEvent mouseEvent) throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -30,7 +30,13 @@ public class RegisterPageController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully registered!");
             alert.showAndWait();
 
-            //TODO: Go to login page or user page
+            root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+            Scene scene = new Scene(root);
+
+            stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Movie Theater - Login");
+            stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();
