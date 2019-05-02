@@ -285,4 +285,30 @@ public class DatabaseConnection {
 
         return false;
     }
+
+    public int GetUserID(String username, String password) {
+        String query = "SELECT id, password FROM user WHERE username = ?";
+        String hashed_pw = null;
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.absolute(0);
+
+            while(resultSet.next()) {
+                hashed_pw = resultSet.getString("password");
+
+                if (BCrypt.checkpw(password, hashed_pw)) {
+                    return resultSet.getInt("id");
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return 0;
+    }
 }

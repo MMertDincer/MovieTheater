@@ -14,21 +14,6 @@
    <children>
       <TabPane fx:id="adminTabPane" prefHeight="430.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Users">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="userTableView" layoutX="14.0" layoutY="36.0" prefHeight="280.0" prefWidth="300.0" />
-                        <Label layoutX="414.0" layoutY="14.0" text="Register User" />
-                        <Label layoutX="128.0" layoutY="14.0" text="Delete User" />
-                        <TextField fx:id="usernameField" layoutX="372.0" layoutY="41.0" promptText="Username" />
-                        <PasswordField fx:id="passwordField" layoutX="372.0" layoutY="76.0" promptText="Password" />
-                        <Button fx:id="registerUserButton" layoutX="421.0" layoutY="112.0" mnemonicParsing="false" onMouseClicked="#registerUserButtonClicked" text="Register" />
-                        <Button fx:id="deleteButton" layoutX="99.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#deleteUserButtonClicked" text="Delete" />
-                        <Button fx:id="refreshUserTable" layoutX="164.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#refreshUserTableButtonClicked" text="Refresh" />
-                     </children></AnchorPane>
-            </content>
-          </Tab>
           <Tab text="Movies">
             <content>
               <AnchorPane fx:id="refreshMovieTable" minHeight="0.0" minWidth="0.0" onMouseClicked="#refreshMovieTableButtonClicked" prefHeight="395.0" prefWidth="600.0">
@@ -60,24 +45,9 @@
                         <TextField fx:id="reservationTypeIDField" layoutX="381.0" layoutY="74.0" promptText="Reservation Type ID" />
                         <TextField fx:id="userIDField" layoutX="381.0" layoutY="110.0" promptText="User ID" />
                         <Label layoutX="381.0" layoutY="149.0" text="PNR Code:" />
-                        <TextField fx:id="pnrCodeField" disable="true" editable="false" layoutX="459.0" layoutY="144.0" prefHeight="27.0" prefWidth="89.0" />
+                        <TextField fx:id="pnrCodeField" disable="true" editable="false" layoutX="459.0" layoutY="144.0" prefHeight="27.0" prefWidth="89.0" promptText="------------" />
                         <Button fx:id="addReservationButton" layoutX="443.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#addReservationButtonClicked" text="Add" />
                      </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Auditoriums">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="auditoriumTableView" layoutX="14.0" layoutY="40.0" prefHeight="280.0" prefWidth="300.0" />
-                        <Label layoutX="127.0" layoutY="14.0" text="Auditoriums" />
-                        <Button fx:id="refreshAuditoriumTableButton" layoutX="131.0" layoutY="333.0" mnemonicParsing="false" onMouseClicked="#refreshAuditoriumTableButtonClicked" text="Refresh" />
-                        <Label layoutX="416.0" layoutY="14.0" text="Add Auditorium" />
-                        <TextField fx:id="auditNameField" layoutX="380.0" layoutY="40.0" promptText="Name" />
-                        <TextField fx:id="auditSeatNoField" layoutX="380.0" layoutY="76.0" promptText="Seats Number" />
-                        <Button fx:id="addAuditoriumButton" layoutX="442.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#addAuditoriumButtonClicked" text="Add" />
-                     </children>
-                  </AnchorPane>
               </content>
             </Tab>
             <Tab text="Screenings">
@@ -96,6 +66,36 @@
                      </children></AnchorPane>
               </content>
             </Tab>
+            <Tab text="Auditoriums">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="auditoriumTableView" layoutX="14.0" layoutY="40.0" prefHeight="280.0" prefWidth="300.0" />
+                        <Label layoutX="127.0" layoutY="14.0" text="Auditoriums" />
+                        <Button fx:id="refreshAuditoriumTableButton" layoutX="131.0" layoutY="333.0" mnemonicParsing="false" onMouseClicked="#refreshAuditoriumTableButtonClicked" text="Refresh" />
+                        <Label layoutX="416.0" layoutY="14.0" text="Add Auditorium" />
+                        <TextField fx:id="auditNameField" layoutX="380.0" layoutY="40.0" promptText="Name" />
+                        <TextField fx:id="auditSeatNoField" layoutX="380.0" layoutY="76.0" promptText="Seats Number" />
+                        <Button fx:id="addAuditoriumButton" layoutX="442.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#addAuditoriumButtonClicked" text="Add" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Users">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="userTableView" layoutX="14.0" layoutY="36.0" prefHeight="280.0" prefWidth="300.0" />
+                        <Label layoutX="414.0" layoutY="14.0" text="Register User" />
+                        <Label layoutX="128.0" layoutY="14.0" text="Delete User" />
+                        <TextField fx:id="usernameField" layoutX="372.0" layoutY="41.0" promptText="Username" />
+                        <PasswordField fx:id="passwordField" layoutX="372.0" layoutY="76.0" promptText="Password" />
+                        <Button fx:id="registerUserButton" layoutX="421.0" layoutY="112.0" mnemonicParsing="false" onMouseClicked="#registerUserButtonClicked" text="Register" />
+                        <Button fx:id="deleteButton" layoutX="99.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#deleteUserButtonClicked" text="Delete" />
+                        <Button fx:id="refreshUserTable" layoutX="164.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#refreshUserTableButtonClicked" text="Refresh" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
         </tabs>
       </TabPane>
    </children>
