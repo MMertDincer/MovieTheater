@@ -62,6 +62,7 @@ public class AdminPageController {
     public TextField userIDField;
     public TextField pnrCodeField;
     public Button addReservationButton;
+    public Button deleteReservationButton;
 
 
     DatabaseConnection connection = new DatabaseConnection();
@@ -277,6 +278,19 @@ public class AdminPageController {
         int userIDToBeDeleted = Integer.parseInt(x.substring(1, x.indexOf(",")));
 
         if (connection.IsDeleteUserSuccessful(userIDToBeDeleted)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully deleted user!");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
+            alert.showAndWait();
+        }
+    }
+
+    public void deleteReservationButtonClicked(MouseEvent mouseEvent) {
+        String x = reservationTableView.getSelectionModel().getSelectedItem().toString();
+        int reservationIDToBeDeleted = Integer.parseInt(x.substring(1, x.indexOf(",")));
+
+        if (connection.IsDeleteReservationSuccessful(reservationIDToBeDeleted)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully deleted user!");
             alert.showAndWait();
         } else {

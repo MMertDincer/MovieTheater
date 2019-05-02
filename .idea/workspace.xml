@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/AdminPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/AdminPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/AdminPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/AdminPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/LoginPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/LoginPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/RegisterPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/RegisterPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/RegisterPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/RegisterPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/UserPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/UserPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/UserPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/UserPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieTheater/sample/AdminPage.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieTheater/sample/LoginPage.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieTheater/sample/RegisterPage.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieTheater/sample/UserPage.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/movietheater/AdminPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/AdminPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/movietheater/AdminPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/AdminPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/movietheater/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movietheater/DatabaseConnection.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,7 +85,7 @@
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -109,7 +104,7 @@
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -118,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/src/movietheater/RegisterPageController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="277">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,8 +125,8 @@
         <entry file="file://$PROJECT_DIR$/src/movietheater/AdminPage.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57">
-              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="177">
+              <caret line="49" column="142" selection-start-line="49" selection-start-column="142" selection-end-line="49" selection-end-column="142" />
             </state>
           </provider>
         </entry>
@@ -139,8 +134,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/movietheater/AdminPageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2968">
-              <caret line="285" column="5" lean-forward="true" selection-start-line="285" selection-start-column="5" selection-end-line="285" selection-end-column="5" />
+            <state relative-caret-position="273">
+              <caret line="317" column="5" lean-forward="true" selection-start-line="317" selection-start-column="5" selection-end-line="317" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4124#4125#0" expanded="true" />
@@ -164,7 +159,7 @@
         <entry file="file://$PROJECT_DIR$/src/movietheater/UserSession.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
                 <element signature="e#525#526#0" expanded="true" />
                 <element signature="e#555#556#0" expanded="true" />
@@ -182,8 +177,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/movietheater/DatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="320" column="1" lean-forward="true" selection-start-line="320" selection-start-column="1" selection-end-line="320" selection-end-column="1" />
+            <state relative-caret-position="252">
+              <caret line="335" column="21" lean-forward="true" selection-start-line="335" selection-start-column="21" selection-end-line="335" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -242,6 +237,7 @@
         <option value="$PROJECT_DIR$/src/sample/LoginPageController.java" />
         <option value="$PROJECT_DIR$/src/sample/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/src/sample/AdminPageController.java" />
+        <option value="$PROJECT_DIR$/src/movietheater/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/src/movietheater/AdminPageController.java" />
       </list>
     </option>
@@ -499,18 +495,10 @@
     <entry file="jar://$USER_HOME$/lib/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/com/sun/glass/ui/InvokeLaterDispatcher.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/movietheater/AdminPage.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/movietheater/RegisterPageController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -521,7 +509,7 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -536,7 +524,7 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
@@ -550,20 +538,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/movietheater/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="320" column="1" lean-forward="true" selection-start-line="320" selection-start-column="1" selection-end-line="320" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/movietheater/UserSession.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
             <element signature="e#525#526#0" expanded="true" />
             <element signature="e#555#556#0" expanded="true" />
@@ -577,10 +555,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/movietheater/AdminPage.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="49" column="142" selection-start-line="49" selection-start-column="142" selection-end-line="49" selection-end-column="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/movietheater/DatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="335" column="21" lean-forward="true" selection-start-line="335" selection-start-column="21" selection-end-line="335" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/movietheater/AdminPageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2968">
-          <caret line="285" column="5" lean-forward="true" selection-start-line="285" selection-start-column="5" selection-end-line="285" selection-end-column="5" />
+        <state relative-caret-position="273">
+          <caret line="317" column="5" lean-forward="true" selection-start-line="317" selection-start-column="5" selection-end-line="317" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4124#4125#0" expanded="true" />

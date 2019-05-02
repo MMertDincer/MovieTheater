@@ -318,4 +318,21 @@ public class DatabaseConnection {
 
         return false;
     }
+
+    public boolean IsDeleteReservationSuccessful(int reservationID) {
+        String query = "DELETE FROM reservation WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, reservationID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return false;
+    }
 }
