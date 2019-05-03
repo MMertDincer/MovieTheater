@@ -349,4 +349,23 @@ public class DatabaseConnection {
 
         return null;
     }
+
+    public int GetMovieIDFromTitle(String title) {
+        String query = "SELECT id FROM movie WHERE title LIKE ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, "%" + title + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                return resultSet.getInt("id");
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return -1;
+    }
 }
