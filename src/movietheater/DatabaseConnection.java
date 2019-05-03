@@ -368,4 +368,23 @@ public class DatabaseConnection {
 
         return -1;
     }
+
+    public ResultSet GetReservationsById(int userID) {
+        String query = "SELECT * FROM reservation\n" +
+                "INNER JOIN screening ON screening.id = reservation.screening_id\n" +
+                "INNER JOIN movie ON movie.id = screening.movie_id\n" +
+                "INNER JOIN auditorium ON auditorium.id = screening.auditorium_id\n" +
+                "INNER JOIN reservation_type ON reservation_type.id = reservation.reservation_type_id\n" +
+                "WHERE reservation.user_id = ?;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, userID);
+
+            return preparedStatement.executeQuery();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return null;
+    }
 }

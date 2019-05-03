@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="350.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movietheater.MyReservationsPageController">
+   <children>
+      <ListView fx:id="myReservationsListView" layoutX="15.0" layoutY="14.0" prefHeight="190.0" prefWidth="290.0" />
+      <Label fx:id="titleLabel" layoutX="15.0" layoutY="214.0" />
+      <Label fx:id="reservTypeLabel" layoutX="15.0" layoutY="265.0" />
+      <Label fx:id="pnrCodeLabel" layoutX="15.0" layoutY="282.0" />
+      <Label fx:id="dateAndTimeLabel" layoutX="15.0" layoutY="231.0" />
+      <Label fx:id="auditoriumLabel" layoutX="15.0" layoutY="248.0" />
+      <Button fx:id="backToUserPageButton" layoutX="245.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#backToUserPageButtonClicked" text="&lt; Back" />
+   </children>
+</AnchorPane>
