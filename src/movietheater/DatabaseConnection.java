@@ -163,7 +163,7 @@ public class DatabaseConnection {
     }
 
     public ResultSet GetReservationTable() {
-        String query = "SELECT * FROM reservation";
+        String query = "SELECT * FROM reservationwithoutid";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE);
@@ -254,9 +254,9 @@ public class DatabaseConnection {
         return false;
     }
 
-    public boolean IsAddReservationSuccessful(int screeningID, int reservTypeID, int userID, String pnrCode) {
-        String query = "INSERT INTO reservation(screening_id, reservation_type_id, user_id, pnr_code)" +
-                "VALUES(?, ?, ?, ?)";
+    public boolean IsAddReservationSuccessful(int screeningID, int reservTypeID, int userID, String pnrCode, int seatID) {
+        String query = "INSERT INTO reservation(screening_id, reservation_type_id, user_id, pnr_code, seat_id)" +
+                "VALUES(?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -265,6 +265,7 @@ public class DatabaseConnection {
             preparedStatement.setInt(2, reservTypeID);
             preparedStatement.setInt(3, userID);
             preparedStatement.setString(4, pnrCode);
+            preparedStatement.setInt(5, seatID);
 
             preparedStatement.executeUpdate();
             return true;
@@ -375,6 +376,7 @@ public class DatabaseConnection {
                 "INNER JOIN movie ON movie.id = screening.movie_id\n" +
                 "INNER JOIN auditorium ON auditorium.id = screening.auditorium_id\n" +
                 "INNER JOIN reservation_type ON reservation_type.id = reservation.reservation_type_id\n" +
+                "INNER JOIN seat ON seat.id = reservation.seat_id\n" +
                 "WHERE reservation.user_id = ?;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);

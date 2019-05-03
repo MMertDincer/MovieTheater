@@ -25,6 +25,7 @@ public class MyReservationsPageController {
     public Label dateAndTimeLabel;
     public Label auditoriumLabel;
     public Button backToUserPageButton;
+    public Label rowNumberLabel;
 
     Stage stage;
     Parent root;
@@ -52,11 +53,12 @@ public class MyReservationsPageController {
 
             try {
                 while(resultSet.next()) {
-                    titleLabel.setText(movieTitle);
-                    dateAndTimeLabel.setText(resultSet.getTimestamp("screening_start").toString());
-                    auditoriumLabel.setText(resultSet.getString("name"));
-                    reservTypeLabel.setText(resultSet.getString("reservation_type"));
-                    pnrCodeLabel.setText(resultSet.getString("pnr_code"));
+                    titleLabel.setText("Title: " + movieTitle);
+                    dateAndTimeLabel.setText("Date and Time: " + resultSet.getTimestamp("screening_start").toString());
+                    auditoriumLabel.setText("Auditorium: " + resultSet.getString("name"));
+                    reservTypeLabel.setText("Reservation Type: " + resultSet.getString("reservation_type"));
+                    pnrCodeLabel.setText("PNR Code: " + resultSet.getString("pnr_code"));
+                    rowNumberLabel.setText("Row: " + resultSet.getInt("row") + "\nSeat No: " + resultSet.getInt("number"));
                 }
             } catch (SQLException ex) {
                 System.err.println(ex);

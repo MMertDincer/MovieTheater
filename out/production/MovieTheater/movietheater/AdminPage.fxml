@@ -29,7 +29,7 @@
                         <DatePicker fx:id="releaseDateField" layoutX="371.0" layoutY="235.0" prefHeight="27.0" prefWidth="166.0" promptText="Release Date" />
                         <TextField fx:id="durationField" layoutX="371.0" layoutY="271.0" promptText="Duration (min)" />
                         <Button fx:id="addMovieButton" layoutX="431.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#addMovieButtonClicked" text="Add" />
-                        <Button fx:id="refreshMovieTableButton" layoutX="131.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#refreshMovieTableButtonClicked" text="Refresh" />
+                        <Button fx:id="refreshMovieTableButton" layoutX="14.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#refreshMovieTableButtonClicked" text="Refresh" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -44,10 +44,11 @@
                         <TextField fx:id="screeningIDField" layoutX="381.0" layoutY="40.0" promptText="Screening ID" />
                         <TextField fx:id="reservationTypeIDField" layoutX="381.0" layoutY="74.0" promptText="Reservation Type ID" />
                         <TextField fx:id="userIDField" layoutX="381.0" layoutY="110.0" promptText="User ID" />
-                        <Label layoutX="381.0" layoutY="149.0" text="PNR Code:" />
-                        <TextField fx:id="pnrCodeField" disable="true" editable="false" layoutX="459.0" layoutY="144.0" prefHeight="27.0" prefWidth="89.0" promptText="------------" />
-                        <Button fx:id="addReservationButton" layoutX="443.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#addReservationButtonClicked" text="Add" />
+                        <Label layoutX="381.0" layoutY="190.0" text="PNR Code:" />
+                        <TextField fx:id="pnrCodeField" disable="true" editable="false" layoutX="459.0" layoutY="185.0" prefHeight="27.0" prefWidth="89.0" promptText="------------" />
+                        <Button fx:id="addReservationButton" layoutX="443.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#addReservationButtonClicked" text="Add" />
                         <Button fx:id="deleteReservationButton" layoutX="105.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#deleteReservationButtonClicked" text="Delete" />
+                        <TextField fx:id="seatIDField" layoutX="381.0" layoutY="145.0" promptText="Seat ID" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -57,7 +58,7 @@
                      <children>
                         <TableView fx:id="screeningTableView" layoutX="14.0" layoutY="41.0" prefHeight="280.0" prefWidth="300.0" />
                         <Label layoutX="130.0" layoutY="14.0" text="Screenings" />
-                        <Button fx:id="refreshScreeningTableButton" layoutX="131.0" layoutY="333.0" mnemonicParsing="false" onMouseClicked="#refreshScreeningTableButtonClicked" text="Refresh" />
+                        <Button fx:id="refreshScreeningTableButton" layoutX="14.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#refreshScreeningTableButtonClicked" text="Refresh" />
                         <Label layoutX="415.0" layoutY="14.0" text="Add Screening" />
                         <TextField fx:id="movieIDField" layoutX="377.0" layoutY="41.0" promptText="Movie ID" />
                         <TextField fx:id="auditoriumIDField" layoutX="377.0" layoutY="77.0" promptText="Auditorium ID" />
@@ -73,7 +74,7 @@
                      <children>
                         <TableView fx:id="auditoriumTableView" layoutX="14.0" layoutY="40.0" prefHeight="280.0" prefWidth="300.0" />
                         <Label layoutX="127.0" layoutY="14.0" text="Auditoriums" />
-                        <Button fx:id="refreshAuditoriumTableButton" layoutX="131.0" layoutY="333.0" mnemonicParsing="false" onMouseClicked="#refreshAuditoriumTableButtonClicked" text="Refresh" />
+                        <Button fx:id="refreshAuditoriumTableButton" layoutX="14.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#refreshAuditoriumTableButtonClicked" text="Refresh" />
                         <Label layoutX="416.0" layoutY="14.0" text="Add Auditorium" />
                         <TextField fx:id="auditNameField" layoutX="380.0" layoutY="40.0" promptText="Name" />
                         <TextField fx:id="auditSeatNoField" layoutX="380.0" layoutY="76.0" promptText="Seats Number" />

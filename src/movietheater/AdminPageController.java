@@ -63,6 +63,7 @@ public class AdminPageController {
     public TextField pnrCodeField;
     public Button addReservationButton;
     public Button deleteReservationButton;
+    public TextField seatIDField;
 
 
     DatabaseConnection connection = new DatabaseConnection();
@@ -389,11 +390,13 @@ public class AdminPageController {
         int screeningID = Integer.parseInt(screeningIDField.getText());
         int reservTypeID = Integer.parseInt(reservationTypeIDField.getText());
         int userID = Integer.parseInt(userIDField.getText());
+        int seatID = Integer.parseInt(seatIDField.getText());
+
         String pnrCode = GeneratePNRCode(8, 0, 'T');
         pnrCodeField.setText(pnrCode);
         System.out.println(pnrCode.length());
 
-        if (connection.IsAddReservationSuccessful(screeningID, reservTypeID, userID, pnrCode)) {
+        if (connection.IsAddReservationSuccessful(screeningID, reservTypeID, userID, pnrCode, seatID)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully added!");
             alert.showAndWait();
         } else {
