@@ -272,6 +272,9 @@ public class AdminPageController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();
         }
+
+        // Refresh the table
+        PopulateUsersTable();
     }
 
     public void deleteUserButtonClicked(MouseEvent mouseEvent) throws NoSuchFieldException {
@@ -285,6 +288,9 @@ public class AdminPageController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();
         }
+
+        // Refresh the table
+        PopulateUsersTable();
     }
 
     public void deleteReservationButtonClicked(MouseEvent mouseEvent) {
@@ -298,6 +304,9 @@ public class AdminPageController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();
         }
+
+        // Refresh the table
+        PopulateReservationTable();
     }
 
     public void addMovieButtonClicked(MouseEvent mouseEvent) {
@@ -316,6 +325,9 @@ public class AdminPageController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();
         }
+
+        // Refresh the table
+        PopulateMoviesTable();
     }
 
     public void refreshUserTableButtonClicked(MouseEvent mouseEvent) {
@@ -349,6 +361,9 @@ public class AdminPageController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();
         }
+
+        // Refresh the table
+        PopulateAuditoriumTable();
     }
 
     public void addScreeningButtonClicked(MouseEvent mouseEvent) {
@@ -363,6 +378,9 @@ public class AdminPageController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();
         }
+
+        // Refresh the table
+        PopulateScreeningTable();
     }
 
     public char GetRandomChar() {
@@ -403,5 +421,8 @@ public class AdminPageController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
             alert.showAndWait();
         }
+
+        // Refresh the table
+        PopulateReservationTable();
     }
 }
