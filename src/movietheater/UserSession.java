@@ -33,6 +33,7 @@ public final class UserSession {
     public void cleanUserSession() {
         username = "";
         userID = 0;
+        instance = null;
     }
 
     @Override

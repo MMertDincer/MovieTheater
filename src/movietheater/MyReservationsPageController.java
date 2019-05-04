@@ -28,6 +28,9 @@ public class MyReservationsPageController {
     DatabaseConnection connection = new DatabaseConnection();
 
     public void PopulateMyReservationsTable() throws SQLException {
+        System.out.println(UserSession.getInstance().getUsername() +
+                UserSession.getInstance().getUserID());
+
         ResultSet resultSet = connection.GetReservationsByUserId(UserSession.getInstance().getUserID());
         ObservableList<String> data = FXCollections.observableArrayList();
         myReservationsListView.setItems(data);
