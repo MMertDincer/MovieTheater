@@ -23,12 +23,15 @@ public class UserPageController {
 
     public ListView inTheatersListView;
     public Button myReservationsButton;
+    public Button logoutButton;
 
     Stage stage;
     Parent root;
 
     Map<ImageView, Integer> imageTitleDict = new HashMap<ImageView, Integer>();
     DatabaseConnection connection = new DatabaseConnection();
+
+    String movieTitle;
 
     public void PopulateInTheatersPane() throws SQLException {
         ResultSet resultSet = connection.GetScreeningMoviePosterAndTitle();
@@ -37,13 +40,13 @@ public class UserPageController {
 
         while(resultSet.next()) {
             Image image = new Image(resultSet.getString(1), true);
-            String title = resultSet.getString(2);
+            movieTitle = resultSet.getString(2);
 
             ImageView imageView = new ImageView(image);
             imageView.setFitHeight(370);
             imageView.setPreserveRatio(true);
 
-            imageTitleDict.put(imageView, connection.GetMovieIDFromTitle(title));
+            imageTitleDict.put(imageView, connection.GetMovieIDFromTitle(movieTitle));
             data.add(imageView);
         }
     }
@@ -55,7 +58,24 @@ public class UserPageController {
             var clickedItem = inTheatersListView.getSelectionModel().getSelectedItem();
             var movieID = imageTitleDict.get(clickedItem);
 
-            //TODO: Show movie info
+            MovieDetailsPageController detailsPageController = null;
+            FXMLLoader loader = null;
+            try {
+                loader = new FXMLLoader(getClass().getResource("MovieDetailsPage.fxml"));
+                root = loader.load();
+
+                detailsPageController = loader.getController();
+                detailsPageController.PopulateMovieDetailsPage(movieID);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Scene scene = new Scene(root);
+
+            stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Movie Theater - " + connection.GetMovieTitleFromID(movieID));
+            stage.show();
         });
     }
 
@@ -67,5 +87,8 @@ public class UserPageController {
         stage.setScene(scene);
         stage.setTitle("Movie Theater - My Reservations");
         stage.show();
+    }
+
+    public void logoutButtonClicked(MouseEvent mouseEvent) {
     }
 }

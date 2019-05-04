@@ -401,6 +401,39 @@ public class DatabaseConnection {
         return -1;
     }
 
+    public String GetMovieTitleFromID(int movieID) {
+        String query = "SELECT title FROM movie WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, movieID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                return resultSet.getString("title");
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return "";
+    }
+
+    public ResultSet GetMovieById(int movieID) {
+        String query = "SELECT * FROM movie WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, movieID);
+            return preparedStatement.executeQuery();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return null;
+    }
+
     public ResultSet GetReservationsByUserId(int userID) {
         String query = "SELECT * FROM reservation\n" +
                 "INNER JOIN screening ON screening.id = reservation.screening_id\n" +
