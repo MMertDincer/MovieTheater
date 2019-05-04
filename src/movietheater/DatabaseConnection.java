@@ -267,9 +267,40 @@ public class DatabaseConnection {
             preparedStatement.setString(4, pnrCode);
             preparedStatement.setInt(5, seatID);
 
-            preparedStatement.executeUpdate();
-            return true;
+            if (IsReserveSeatSuccessful(seatID)) {
+                preparedStatement.executeUpdate();
+                return true;
+            } else {
+                return false;
+            }
 
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return false;
+    }
+
+    public boolean IsReserveSeatSuccessful(int seatID) {
+        String query1 = "SELECT reserved FROM seat WHERE id = ?";
+        String query2 = "UPDATE seat SET reserved = TRUE WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query1);
+            PreparedStatement preparedStatement1 = connection.prepareStatement(query2);
+
+            preparedStatement.setInt(1, seatID);
+            preparedStatement1.setInt(1, seatID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                if (resultSet.getBoolean("reserved")) {
+                    return false;
+                } else {
+                    preparedStatement1.executeUpdate();
+                    return true;
+                }
+            }
         } catch (SQLException ex) {
             System.err.println(ex);
         }
