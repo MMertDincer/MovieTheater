@@ -89,6 +89,15 @@ public class UserPageController {
         stage.show();
     }
 
-    public void logoutButtonClicked(MouseEvent mouseEvent) {
+    public void logoutButtonClicked(MouseEvent mouseEvent) throws IOException {
+        UserSession.getInstance().cleanUserSession();
+
+        root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+        Scene scene = new Scene(root);
+
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Movie Theater - Login");
+        stage.show();
     }
 }
