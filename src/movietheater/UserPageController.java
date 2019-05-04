@@ -2,7 +2,6 @@ package movietheater;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -32,7 +31,7 @@ public class UserPageController {
     DatabaseConnection connection = new DatabaseConnection();
 
     public void PopulateInTheatersPane() throws SQLException {
-        ResultSet resultSet = connection.GetMoviePosterAndTitle();
+        ResultSet resultSet = connection.GetScreeningMoviePosterAndTitle();
         ObservableList<ImageView> data = FXCollections.observableArrayList();
         inTheatersListView.setItems(data);
 
@@ -55,7 +54,6 @@ public class UserPageController {
         inTheatersListView.setOnMouseClicked(mouseEvent -> {
             var clickedItem = inTheatersListView.getSelectionModel().getSelectedItem();
             var movieID = imageTitleDict.get(clickedItem);
-            //System.out.println("Clicked on movie with the ID of " + movieID);
 
             //TODO: Show movie info
         });

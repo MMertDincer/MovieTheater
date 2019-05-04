@@ -19,13 +19,8 @@ import java.sql.SQLException;
 public class MyReservationsPageController {
 
     public ListView myReservationsListView;
-    public Label titleLabel;
-    public Label reservTypeLabel;
-    public Label pnrCodeLabel;
-    public Label dateAndTimeLabel;
-    public Label auditoriumLabel;
     public Button backToUserPageButton;
-    public Label rowNumberLabel;
+    public Label reservDetailLabel;
 
     Stage stage;
     Parent root;
@@ -33,7 +28,7 @@ public class MyReservationsPageController {
     DatabaseConnection connection = new DatabaseConnection();
 
     public void PopulateMyReservationsTable() throws SQLException {
-        ResultSet resultSet = connection.GetReservationsById(UserSession.getInstance().getUserID());
+        ResultSet resultSet = connection.GetReservationsByUserId(UserSession.getInstance().getUserID());
         ObservableList<String> data = FXCollections.observableArrayList();
         myReservationsListView.setItems(data);
 
@@ -47,18 +42,22 @@ public class MyReservationsPageController {
         PopulateMyReservationsTable();
 
         myReservationsListView.setOnMouseClicked(mouseEvent -> {
-            ResultSet resultSet = connection.GetReservationsById(UserSession.getInstance().getUserID());
+            ResultSet resultSet = connection.GetReservationsByUserId(UserSession.getInstance().getUserID());
             var clickedItem = myReservationsListView.getSelectionModel().getSelectedItem();
-            String movieTitle = clickedItem.toString();
+            String selectedMovieTitle = clickedItem.toString();
 
             try {
                 while(resultSet.next()) {
-                    titleLabel.setText("Title: " + movieTitle);
-                    dateAndTimeLabel.setText("Date and Time: " + resultSet.getTimestamp("screening_start").toString());
-                    auditoriumLabel.setText("Auditorium: " + resultSet.getString("name"));
-                    reservTypeLabel.setText("Reservation Type: " + resultSet.getString("reservation_type"));
-                    pnrCodeLabel.setText("PNR Code: " + resultSet.getString("pnr_code"));
-                    rowNumberLabel.setText("Row: " + resultSet.getInt("row") + "\nSeat No: " + resultSet.getInt("number"));
+                    if (selectedMovieTitle.equals(resultSet.getString("title"))) {
+                        reservDetailLabel.setText(
+                                "Title: " + selectedMovieTitle +
+                                "\nDate and Time: " + resultSet.getTimestamp("screening_start") +
+                                "\nAuditorium: " + resultSet.getString("name") +
+                                "\nReservation Type: " + resultSet.getString("reservation_type") +
+                                "\n" +
+                                "Seat Row: " + resultSet.getInt("row") +
+                                "\nSeat Number: " + resultSet.getInt("number"));
+                    }
                 }
             } catch (SQLException ex) {
                 System.err.println(ex);

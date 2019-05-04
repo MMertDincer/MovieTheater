@@ -296,9 +296,10 @@ public class AdminPageController {
     public void deleteReservationButtonClicked(MouseEvent mouseEvent) {
         String x = reservationTableView.getSelectionModel().getSelectedItem().toString();
         int reservationIDToBeDeleted = Integer.parseInt(x.substring(1, x.indexOf(",")));
+        System.out.println(reservationIDToBeDeleted);
 
         if (connection.IsDeleteReservationSuccessful(reservationIDToBeDeleted)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully deleted user!");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully deleted reservation!");
             alert.showAndWait();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
@@ -412,7 +413,6 @@ public class AdminPageController {
 
         String pnrCode = GeneratePNRCode(8, 0, 'T');
         pnrCodeField.setText(pnrCode);
-        System.out.println(pnrCode.length());
 
         if (connection.IsAddReservationSuccessful(screeningID, reservTypeID, userID, pnrCode, seatID)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully added!");

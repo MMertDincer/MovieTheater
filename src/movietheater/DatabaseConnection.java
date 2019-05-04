@@ -337,8 +337,8 @@ public class DatabaseConnection {
         return false;
     }
 
-    public ResultSet GetMoviePosterAndTitle() {
-        String query = "SELECT movie_img_url, title FROM movie INNER JOIN screening ON movie.id = screening.movie_id;";
+    public ResultSet GetScreeningMoviePosterAndTitle() {
+        String query = "SELECT DISTINCT movie_img_url, title FROM movie INNER JOIN screening ON movie.id = screening.movie_id;";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -370,7 +370,7 @@ public class DatabaseConnection {
         return -1;
     }
 
-    public ResultSet GetReservationsById(int userID) {
+    public ResultSet GetReservationsByUserId(int userID) {
         String query = "SELECT * FROM reservation\n" +
                 "INNER JOIN screening ON screening.id = reservation.screening_id\n" +
                 "INNER JOIN movie ON movie.id = screening.movie_id\n" +
