@@ -64,6 +64,8 @@ public class AdminPageController {
     public Button addReservationButton;
     public Button deleteReservationButton;
     public TextField seatIDField;
+    public Button deleteMovieButton;
+    public Button deleteScreeningButton;
 
 
     DatabaseConnection connection = new DatabaseConnection();
@@ -424,5 +426,39 @@ public class AdminPageController {
 
         // Refresh the table
         PopulateReservationTable();
+    }
+
+    public void deleteMovieButtonClicked(MouseEvent mouseEvent) {
+        String x = movieTableView.getSelectionModel().getSelectedItem().toString();
+        int movieIDToBeDeleted = Integer.parseInt(x.substring(1, x.indexOf(",")));
+        System.out.println(movieIDToBeDeleted);
+
+        if (connection.IsDeleteMovieSuccessful(movieIDToBeDeleted)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully deleted movie!");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
+            alert.showAndWait();
+        }
+
+        // Refresh the table
+        PopulateMoviesTable();
+    }
+
+    public void deleteScreeningButtonClicked(MouseEvent mouseEvent) {
+        String x = screeningTableView.getSelectionModel().getSelectedItem().toString();
+        int screeningIDToBeDeleted = Integer.parseInt(x.substring(1, x.indexOf(",")));
+        System.out.println(screeningIDToBeDeleted);
+
+        if (connection.IsDeleteScreeningSuccessful(screeningIDToBeDeleted)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successfully deleted screening!");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong.");
+            alert.showAndWait();
+        }
+
+        // Refresh the table
+        PopulateScreeningTable();
     }
 }

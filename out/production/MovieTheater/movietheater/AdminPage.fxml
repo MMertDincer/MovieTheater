@@ -30,6 +30,7 @@
                         <TextField fx:id="durationField" layoutX="371.0" layoutY="271.0" promptText="Duration (min)" />
                         <Button fx:id="addMovieButton" layoutX="431.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#addMovieButtonClicked" text="Add" />
                         <Button fx:id="refreshMovieTableButton" disable="true" layoutX="14.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#refreshMovieTableButtonClicked" opacity="0.0" text="Refresh" />
+                        <Button fx:id="deleteMovieButton" layoutX="14.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#deleteMovieButtonClicked" text="Delete" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -65,6 +66,7 @@
                         <TextField fx:id="timestampField" layoutX="377.0" layoutY="134.0" promptText="yyyy-mm-dd hh:mm:ss" />
                         <Label layoutX="377.0" layoutY="117.0" text="Timestamp" />
                         <Button fx:id="addScreeningButton" layoutX="439.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#addScreeningButtonClicked" text="Add" />
+                        <Button fx:id="deleteScreeningButton" layoutX="14.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#deleteScreeningButtonClicked" text="Delete" />
                      </children></AnchorPane>
               </content>
             </Tab>

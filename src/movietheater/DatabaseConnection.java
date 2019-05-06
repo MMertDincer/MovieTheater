@@ -453,4 +453,38 @@ public class DatabaseConnection {
 
         return null;
     }
+
+    public boolean IsDeleteMovieSuccessful(int movieID) {
+        String query = "DELETE FROM movie WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, movieID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return false;
+    }
+
+    public boolean IsDeleteScreeningSuccessful(int screeningID) {
+        String query = "DELETE FROM screening WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, screeningID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return false;
+    }
 }
